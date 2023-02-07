@@ -34,20 +34,20 @@ public class Products {
     private int days;
 
     public void decreaseHealth() {
+        double decreasedHealth = 0;
         if (usage.equals("daily")) {
-            health -= damage;
+            decreasedHealth = health - damage;
         } else if (usage.equals("weekly")) {
-            health -= (damage * days)/7;
+            decreasedHealth = health - (damage * days)/7;
         } else if (usage.equals("monthly")) {
-            health -= (damage * days)/30;
+            decreasedHealth = health - (damage * days)/30;
         } else if (usage.equals("nousage")) {
-            health = health;
+            decreasedHealth = health;
         }
-
+        health = (int) Math.round(decreasedHealth);
         if (health < 0) {
             health = 0;
         }
     }
-
 }
 
