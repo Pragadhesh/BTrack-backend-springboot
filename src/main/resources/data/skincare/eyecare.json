@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Revitalizing Supreme+",
+        "description": "Youth Power Creme",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PMXY01_640x640_0.jpg",
+        "damage": 7
+    },
+    {
+        "name": "Revitalizing Supreme+ ",
+        "description": "Youth Power Eye Balm",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PMY301_640x640_0.jpg",
+        "damage": 7
+    },
+    {
+        "name": "Re-Nutriv",
+        "description": "Ultimate Diamond Transformative Energy Eye Creme",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_R3HW01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Re-Nutriv",
+        "description": "Re-Creation Eye Balm and Night Serum for Eyes",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_WP1201_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Advanced Night Repair",
+        "description": "Concentrated Recovery Eye Mask",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_REGY01_640x640_0.jpg",
+        "damage": 20
+    },
+    {
+        "name": "DayWear Eye",
+        "description": "Cooling Anti-Oxidant Moisture GelCreme",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_RTX901_640x640_0.jpg",
+        "damage": 15
+    },
+    {
+        "name": "Advanced Time Zone",
+        "description": "Age Reversing Line/Wrinkle Eye Creme",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_Y6NP01_640x640_0.jpg",
+        "damage": 15
+    },
+    {
+        "name": "Re-Nutriv",
+        "description": "Ultimate Lift Age-Correcting Eye Creme",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_WHA001_640x640_0.jpg",
+        "damage":15
+    }
+
+]

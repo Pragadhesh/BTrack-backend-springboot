@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Double Wear",
+        "description": "Stay-in-Place Makeup SPF 10 (Mini)",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_RYE010_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Futurist Hydra Rescue",
+        "description": "Moisturizing Makeup SPF 45",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PE0W36_640x640_0.jpg",
+        "damage": 20
+    },
+    {
+        "name": "Double Wear",
+        "description": "Stay-in-Place Makeup SPF 10 (Mini)",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_RYE098_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Double Wear",
+        "description": "Stay-In-Place Makeup Pump",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_R8KJ01_640x640_0.jpg",
+        "damage": 5
+
+    }
+]

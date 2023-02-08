@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Pure Color Envy",
+        "description": "Sculpting Lipstick",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_YJRRRR_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Pure Color",
+        "description": "Revitalizing Crystal Balm",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PLT202_640x640_0.jpg",
+        "damage": 7
+    },
+    {
+        "name": "Pure Color Envy Matte",
+        "description": "Sculpting Lipstick",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_R8FCRR_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Pure Color Desire",
+        "description": "Rouge Excess Lipstick",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_RYKA08_640x640_0.jpg",
+        "damage": 7
+    },
+    {
+        "name": "Pure Color Desire Matte",
+        "description": "Rouge Excess Matte Lipstick",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PAJK02_640x640_0.jpg",
+        "damage": 7
+    }
+]

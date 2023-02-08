@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Perfectly Clean",
+        "description": "Multi-Action Foam Cleanser/Purifying Mask",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_YCE701_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Perfectly Clean",
+        "description": "Multi-Action Cleansing Gelée/Refiner",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_YCF401_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Perfectly Clean",
+        "description": "Multi-Action Creme Cleanser/Moisture Mask",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_YCE801_640x640_0.jpg",
+        "damage": 9
+    },
+    {
+        "name": "Take It Away",
+        "description": "Makeup Remover Lotion",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_YCF701_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Advanced Night",
+        "description": "Micro Cleansing Foam",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_REJF01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Nutritious Super Pomegranate",
+        "description": "Radiant Energy 2-in-1 Cleansing Foam",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P78A01_640x640_0.jpg",
+        "damage": 10
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Sumptuous Rebel",
+        "description": "Length + Lift Mascara",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PAG001_640x640_0.jpg",
+        "damage": 5
+    },
+    {
+        "name": "Sumptuous Extreme",
+        "description": "Mini Lash Multiplying Volume Mascara",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_R8TH01_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Sumptuous Extreme",
+        "description": "Lash Multiplying Volume Mascara",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_WGHW01_640x640_0.jpg",
+        "damage": 8
+    }
+]

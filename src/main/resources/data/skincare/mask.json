@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Re-Nutriv",
+        "description": "Ultimate Diamond Transformative Thermal Ritual",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_RKF701_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "Advanced Night Repair",
+        "description": "Concentrated Recovery PowerFoil Mask",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_R6C801_640x640_0.jpg",
+        "damage": 20
+    },
+    {
+        "name":"Advanced Night Repair",
+        "description": "Concentrated Recovery Eye Mask",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_REGY01_640x640_0.jpg",
+        "damage": 20
+    }
+]

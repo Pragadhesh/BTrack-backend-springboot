@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Pure Color",
+        "description": "Revitalizing Crystal Balm",
+        "image_url":  "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PLT204_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Pure Color Envy",
+        "description": "Color Replenish Lip Balm",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P9NT01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Pure Color Envy",
+        "description": "Lip Volumizer",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P9NR01_640x640_0.jpg",
+        "damage": 7
+    },
+    {
+        "name": "Pure Color Envy",
+        "description": "Lip Repair Potion",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P9NX01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Pure Color Envy",
+        "description": "Smoothing Sugar Scrub",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P9NW01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Pure Color Envy",
+        "description": "Nighttime Rescue Lip Oil-Serum",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PH9F01_640x640_0.jpg",
+        "damage": 10
+    }
+]

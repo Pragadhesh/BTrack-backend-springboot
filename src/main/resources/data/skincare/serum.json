@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Advanced Night Repair",
+        "description": "Synchronized Multi-Recovery Complex",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PMG501_640x640_0.jpg",
+        "damage": 5
+    },
+    {
+        "name": "Idealist",
+        "description": "Pore Minimizing Skin Refinisher",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_9MTG01_640x640_0.jpg",
+        "damage": 5
+    },
+    {
+        "name": "Perfectionist Pro",
+        "description": "Rapid Brightening Treatment with Ferment²+ Vitamin C",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P6GJ01_640x640_0.jpg",
+        "damage": 5
+    },
+    {
+        "name": "Perfectionist Pro",
+        "description": "Rapid Firm + Lift Treatment with Acetyl Hexapeptide-8",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/558x768/el_sku_RY9801_558x768_0.jpg",
+        "damage": 5
+    },
+    {
+        "name": "Advanced Night Repair",
+        "description": "Intense Reset Concentrate",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P9YJ01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Perfectionist [CP+R]",
+        "description": "Wrinkle Lifting/Firming Serum",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_Y6JM01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Re-Nutriv",
+        "description": "Ultimate Lift Age-Correcting Serum",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_WHA201_640x640_0.jpg",
+        "damage": 10
+    }
+
+]

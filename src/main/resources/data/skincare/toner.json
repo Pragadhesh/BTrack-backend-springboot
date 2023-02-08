@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Perfectly Clean",
+        "description": "Multi-Action Toning Lotion/Refiner",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_YCFA01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Re-Nutriv",
+        "description": "Softening Lotion",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_1J2T01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Micro Essence",
+        "description": "Skin Activating Treatment Lotion",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_R65001_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Perfectly Clean",
+        "description": "Triple-Action Cleanser/Toner/Makeup Remover",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_R8RC01_640x640_0.jpg",
+        "damage": 10
+    }
+]

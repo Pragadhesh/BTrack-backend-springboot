@@ -1,0 +1,26 @@
+[
+    {
+        "name": "The Smoother",
+        "description": "Universal Perfecting Primer",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_P78C01_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "The Mattifier",
+        "description": "Shine Control Perfecting Primer + Finisher",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_RMY001_640x640_0.jpg",
+        "damage": 8
+    },
+    {
+        "name": "The Illuminator",
+        "description": "Radiant Perfecting Primer + Finisher",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_RMY201_640x640_0.jpg",
+        "damage": 10
+    },
+    {
+        "name": "Set + Refresh",
+        "description": "Perfecting Makeup Mist",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_REP801_640x640_0.jpg",
+        "damage": 8
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Tender Light",
+        "description": "Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PR2J01_640x640_0.jpg",
+        "damage": 6
+    },
+    {
+        "name": "Sensuous Stars",
+        "description": "Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PR2H01_640x640_0.jpg",
+        "damage": 6
+    },
+    {
+        "name": "Radiant Mirage",
+        "description": "Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PR2F01_640x640_0.jpg",
+        "damage": 6
+    },
+    {
+        "name": "Blushing Sands",
+        "description": "Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PTLG01_640x640_0.jpg",
+        "damage": 6
+    },
+    {
+        "name": "Paradise Moon",
+        "description": "Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PR2K01_640x640_0.jpg",
+        "damage": 6  
+    },
+    {
+        "name": "Desert Eden",
+        "description":"Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PTLH01_640x640_0.jpg",
+        "damage": 6
+    },
+    {
+        "name": "Dream Dusk",
+        "description": "Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PR2G01_640x640_0.jpg",
+        "damage": 6
+    },
+    {
+        "name": "Infinite Sky",
+        "description": "Eau de Parfum Spray",
+        "image_url": "https://www.esteelauder.in/media/export/cms/products/640x640/el_sku_PTLF01_640x640_0.jpg",
+        "damage": 6
+    }
+]
