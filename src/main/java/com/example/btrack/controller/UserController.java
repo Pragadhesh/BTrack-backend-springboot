@@ -1,6 +1,7 @@
 package com.example.btrack.controller;
 
 import com.example.btrack.service.Authenticator;
+import com.example.btrack.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +17,11 @@ public class UserController {
     @Autowired
     Authenticator authService;
 
-    @GetMapping("/user")
-    public ResponseEntity<String> validateUser(@RequestHeader("Authorization") String authorization)
+    @Autowired
+    UserService userService;
+
+    @GetMapping("/user/add")
+    public ResponseEntity<Object> validateUser(@RequestHeader("Authorization") String authorization)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -28,7 +32,7 @@ public class UserController {
         }
         else
         {
-            return new ResponseEntity<>("User is valid",HttpStatus.ACCEPTED);
+            return userService.addUser(idToken);
         }
     }
 
