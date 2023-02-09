@@ -1,5 +1,6 @@
 package com.example.btrack.controller;
 
+import com.example.btrack.dto.Product;
 import com.example.btrack.service.Authenticator;
 import com.example.btrack.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,7 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/product/{module}/{category}")
-    public ResponseEntity<Object> getProducts(@RequestHeader("Authorization") String authorization,
-                                              @PathVariable String category,@PathVariable String module)
+    public ResponseEntity<Object> getProducts(@RequestHeader("Authorization") String authorization, @PathVariable String category,@PathVariable String module)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -32,4 +32,25 @@ public class ProductController {
             return productService.getProductsByCategory(module,category);
         }
     }
+
+    @PostMapping("/product")
+    public ResponseEntity<Object> addProduct(@RequestHeader("Authorization") String authorization,
+                                             @RequestBody Product product)
+    {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result)
+        {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        }
+        else
+        {
+            return productService.addProduct(idToken,product);
+        }
+
+    }
+
+
+
+
 }

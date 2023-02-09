@@ -18,11 +18,11 @@ public class Assist {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Userdetails user;
 
     @ManyToOne
     @JoinColumn(name = "assistant_id")
-    private User assistant;
+    private Userdetails assistant;
 
     @PrePersist
     @PreUpdate

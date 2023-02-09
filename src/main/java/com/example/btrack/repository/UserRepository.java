@@ -2,9 +2,12 @@ package com.example.btrack.repository;
 
 
 
-import com.example.btrack.models.User;
+import com.example.btrack.models.Userdetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<Userdetails, Long> {
+    Optional<Userdetails> findByUsername(String username);
 }
 
