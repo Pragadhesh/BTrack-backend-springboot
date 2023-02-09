@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -147,6 +149,65 @@ public class ProductService {
         }
 
     }
+
+    public ResponseEntity<Object> getProduct(String idToken,String module)
+    {
+        try {
+            Optional<Userdetails> user = userService.getUser(idToken);
+            Userdetails actualUser = user.orElse(null);
+            if (actualUser != null) {
+               List<Products> pr = productsRepository.findByUserAndModule(actualUser,module);
+                List<Map<String, Object>> result = pr.stream()
+                        .collect(Collectors.groupingBy(x -> x.getCategory()))
+                        .entrySet().stream()
+                        .map(entry -> {
+                            Map<String, Object> groupedData = new HashMap<>();
+                            groupedData.put("category", entry.getKey());
+                            groupedData.put("products", entry.getValue());
+                            return groupedData;
+                        })
+                        .collect(Collectors.toList());
+               return new ResponseEntity<>(result,HttpStatus.OK);
+            }
+            else
+            {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
+
+    public ResponseEntity<Object> getAlerts(String idToken)
+    {
+        try {
+            Optional<Userdetails> user = userService.getUser(idToken);
+            Userdetails actualUser = user.orElse(null);
+            if (actualUser != null) {
+                List<Products> pr = productsRepository.findByUserAndHealthLessThanOrderByHealthAsc(actualUser,21);
+                return new ResponseEntity<>(pr,HttpStatus.OK);
+            }
+            else
+            {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
+
+
+
 
 
 

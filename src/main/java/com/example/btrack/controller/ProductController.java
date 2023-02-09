@@ -18,8 +18,8 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/product/{module}/{category}")
-    public ResponseEntity<Object> getProducts(@RequestHeader("Authorization") String authorization, @PathVariable String category,@PathVariable String module)
+    @GetMapping("/addproduct/{module}/{category}")
+    public ResponseEntity<Object> addProducts(@RequestHeader("Authorization") String authorization, @PathVariable String category,@PathVariable String module)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -78,6 +78,36 @@ public class ProductController {
             return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
         } else {
             return productService.deleteProduct(idToken, product);
+        }
+    }
+
+    @GetMapping("/product/{module}")
+    public ResponseEntity<Object> getProducts(@RequestHeader("Authorization") String authorization,@PathVariable String module)
+    {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result)
+        {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        }
+        else
+        {
+            return productService.getProduct(idToken,module);
+        }
+    }
+
+    @GetMapping("/alerts")
+    public ResponseEntity<Object> getAlerts(@RequestHeader("Authorization") String authorization)
+    {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result)
+        {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        }
+        else
+        {
+            return productService.getAlerts(idToken);
         }
     }
 
