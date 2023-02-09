@@ -83,6 +83,71 @@ public class ProductService {
         }
     }
 
+    public ResponseEntity<Object> updateProduct(String idToken,Product item)
+    {
+        try {
+            Optional<Userdetails> user = userService.getUser(idToken);
+            Userdetails actualUser = user.orElse(null);
+            if (actualUser != null) {
+                Optional<Products> pr = productsRepository.findById(item.getId());
+                Products products = pr.orElse(null);
+                if (products == null || products.getUser().getUsername() != actualUser.getUsername()) {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                }
+                else
+                {
+                    products.setUsage(item.getUsage());
+                    products.setHealth(item.getHealth());
+                    products.setUsage(item.getUsage());
+                    Products pd = productsRepository.save(products);
+                    return new ResponseEntity<>(pd,HttpStatus.OK);
+                }
+            }
+            else
+            {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
+
+    public ResponseEntity<Object> deleteProduct(String idToken,Product item)
+    {
+        try {
+            Optional<Userdetails> user = userService.getUser(idToken);
+            Userdetails actualUser = user.orElse(null);
+            if (actualUser != null) {
+                Optional<Products> pr = productsRepository.findById(item.getId());
+                Products products = pr.orElse(null);
+                if (products == null || products.getUser().getUsername() != actualUser.getUsername()) {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                }
+                else
+                {
+                    productsRepository.deleteById(products.getId());
+                    return new ResponseEntity<>("Product deleted successfully",HttpStatus.OK);
+                }
+            }
+            else
+            {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
+
 
 
 }

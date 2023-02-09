@@ -20,7 +20,7 @@ public class BtrackApplication {
 		SpringApplication.run(BtrackApplication.class, args);
 	}
 
-	@Scheduled(cron = "0 */2 * * * *")
+	@Scheduled(cron = "0 0 0 * * *")
 	public void runDaily() {
 		List<Products> products = productsRepository.findAll();
 		System.out.println(products);

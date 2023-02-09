@@ -51,6 +51,35 @@ public class ProductController {
     }
 
 
+    @PutMapping("/product")
+    public ResponseEntity<Object> updateProduct(@RequestHeader("Authorization") String authorization,
+                                             @RequestBody Product product)
+    {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result)
+        {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        }
+        else
+        {
+            return productService.updateProduct(idToken,product);
+        }
+
+    }
+
+
+    @DeleteMapping("/product")
+    public ResponseEntity<Object> deleteProduct(@RequestHeader("Authorization") String authorization,
+                                                @RequestBody Product product) {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result) {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        } else {
+            return productService.deleteProduct(idToken, product);
+        }
+    }
 
 
 }
