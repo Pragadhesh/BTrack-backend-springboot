@@ -203,7 +203,19 @@ public class ProductService {
             System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
 
+    public List<Products> getAlertsforUser(Userdetails user)
+    {
+        try {
+                List<Products> pr = productsRepository.findByUserAndHealthLessThanOrderByHealthAsc(user,21);
+                return pr;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return null;
+        }
     }
 
 
