@@ -54,7 +54,7 @@ public class BtrackApplication {
 			System.out.println(products);
 			if(!products.isEmpty())
 			{
-				emailService.sendCustomEmail(user.getEmail(),"Alerttemplate",products);
+				emailService.sendCustomEmailUsingSIB(user.getEmail(),"Alerttemplate",products);
 			}
 		}
 	}
