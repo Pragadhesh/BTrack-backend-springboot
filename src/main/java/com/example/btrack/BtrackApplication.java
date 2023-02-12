@@ -9,6 +9,7 @@ import com.example.btrack.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -34,10 +35,10 @@ public class BtrackApplication {
 		SpringApplication.run(BtrackApplication.class, args);
 	}
 
-	@Scheduled(cron = "0/40 * * * * *")
+	@Scheduled(cron = "0 0 0 * * *")
 	public void runDaily() {
 		List<Products> products = productsRepository.findAll();
-		String daily  = "*/2 * * * *";
+		String testingcron  = "0/40 * * * *";
 		for (Products product : products) {
 			product.decreaseHealth();
 			productsRepository.save(product);

@@ -5,10 +5,7 @@ import com.example.btrack.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -20,7 +17,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/user/add")
+    @PostMapping("/user/add")
     public ResponseEntity<Object> validateUser(@RequestHeader("Authorization") String authorization)
     {
         String idToken = authorization.replace("Bearer ", "");
