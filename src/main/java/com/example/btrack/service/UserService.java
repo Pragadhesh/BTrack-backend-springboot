@@ -25,6 +25,7 @@ public class UserService {
             // Parse the JWT token to get the username and email
             JWT jwt = new JWT();
             Map<String, Claim> claims = jwt.decodeJwt(idToken).getClaims();
+            System.out.println(claims);
 
             // Get the "exp" claim from the claims map
 

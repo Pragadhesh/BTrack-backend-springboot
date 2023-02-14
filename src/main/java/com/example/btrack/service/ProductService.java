@@ -100,7 +100,7 @@ public class ProductService {
                 {
                     products.setUsage(item.getUsage());
                     products.setHealth(item.getHealth());
-                    products.setUsage(item.getUsage());
+                    products.setDays(item.getDays());
                     Products pd = productsRepository.save(products);
                     return new ResponseEntity<>(pd,HttpStatus.OK);
                 }

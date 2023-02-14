@@ -33,7 +33,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/refresh")
+    @PostMapping("/user/refresh")
     public ResponseEntity<String> getUpdatedTokens (@RequestHeader("Authorization") String authorization )
     {
         String refreshToken = authorization.replace("Bearer ", "");

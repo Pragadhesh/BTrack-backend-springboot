@@ -89,13 +89,13 @@ public class Authenticator {
             String idToken = authResult.getAuthenticationResult().getIdToken();
             String accessToken = authResult.getAuthenticationResult().getAccessToken();
             String refreshTokenf = authResult.getAuthenticationResult().getRefreshToken();
-            System.out.println("this is refresh token"+ authResult);
 
             return new ResponseEntity<>("{\"idToken\": \"" + idToken + "\", " +
                     "\"accessToken\": \"" + accessToken + "\", " +
                     "\"refreshToken\": \"" + refreshToken + "\"}",
                     HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e);
             return new ResponseEntity<>("{\"error\": \"" + e.getMessage() + "\"}",
                     HttpStatus.BAD_REQUEST);
         }
