@@ -56,7 +56,7 @@ public class ProductService {
                 // Use streams to compare the input parameters with the items in the list
                 List<Product> matchingProducts = productList.stream()
                         .filter(product -> product.getName().equals(item.getName()) && product.getDescription().equals(item.getDescription()) &&
-                                product.getImage_url().equals(item.getImage_url()) && product.getDamage() == item.getDamage())
+                                product.getImage_url().equals(item.getImage_url()) )
                         .collect(Collectors.toList());
 
                 if (matchingProducts.isEmpty())
