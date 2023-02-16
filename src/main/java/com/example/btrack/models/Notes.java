@@ -23,4 +23,10 @@ public class Notes {
     private String title;
 
     private String description;
+
+    public Notes(String title, String description, Userdetails actualUser) {
+        this.title = title;
+        this.description = description;
+        this.user = actualUser;
+    }
 }
