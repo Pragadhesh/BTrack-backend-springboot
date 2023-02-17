@@ -368,6 +368,28 @@ public class ProductService {
     }
 
 
+    public List<Products> getDailyRoutine(Userdetails actualUser)
+    {
+        try {
+            if (actualUser != null) {
+                List<Products> products = productsRepository.findByUserAndHealthGreaterThan(actualUser, 10);
+                List<Products> result = getProductsToUseToday(products);
+                List<Products> finalresult = filterProducts(result);
+                List<Products> sortedresult = sortProductsByModule(finalresult);
+
+                return sortedresult;
+            }
+            else {
+                return null;
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return null;
+        }
+    }
+
 
 
 

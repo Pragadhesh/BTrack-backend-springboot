@@ -38,12 +38,13 @@ public class BtrackApplication {
 	@Scheduled(cron = "0 0 0 * * *")
 	public void runDaily() {
 		List<Products> products = productsRepository.findAll();
-		String testingcron  = "0/40 * * * *";
+		String originalcron  = "0/40 * * * * *";
 		for (Products product : products) {
 			product.decreaseHealth();
 			productsRepository.save(product);
 		}
 		sendAlertsDaily();
+		sendRoutineDaily();
 	}
 
 	public void sendAlertsDaily()
@@ -56,6 +57,20 @@ public class BtrackApplication {
 			if(!products.isEmpty())
 			{
 				emailService.sendCustomEmailUsingSIB(user.getEmail(),"Alerttemplate",products);
+			}
+		}
+	}
+
+	public void sendRoutineDaily()
+	{
+		List<Userdetails> users = userRepository.findAll();
+		for (Userdetails user : users)
+		{
+			List<Products> products = productService.getDailyRoutine(user);
+			System.out.println(products);
+			if(!products.isEmpty())
+			{
+				emailService.sendRoutineEmailUsingSIB(user.getEmail(),"Routinetemplate",products);
 			}
 		}
 	}
