@@ -10,13 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -215,6 +215,155 @@ public class ProductService {
         {
             System.out.println(e);
             return null;
+        }
+    }
+
+    public List<Products> getProductsToUseToday(List<Products> products) {
+        // Find products that need to be used today
+        List<Products> productsToUseToday = new ArrayList<Products>();
+        for (int i = 0; i < products.size(); i++) {
+            Products product = products.get(i);
+            String frequency = product.getUsage();
+            if (frequency.equals("daily")) {
+                // Product needs to be used daily
+                productsToUseToday.add(product);
+            } else if (frequency.equals("weekly")) {
+                // Product needs to be used within a specific number of days in the current week
+                int numDays = product.getDays();
+                List<LocalDate> usageDays = getWeeklyUsageDays(numDays);
+                if (usageDays.contains(LocalDate.now())) {
+                    // Product needs to be used today
+                    productsToUseToday.add(product);
+                }
+            } else if (frequency.equals("monthly")) {
+                // Product needs to be used within a specific number of days in the current month
+                int numDays = product.getDays();
+                List<LocalDate> usageDays = getMonthlyUsageDays(numDays);
+                if (usageDays.contains(LocalDate.now())) {
+                    // Product needs to be used today
+                    productsToUseToday.add(product);
+                }
+            }
+        }
+        return productsToUseToday;
+    }
+
+    // Given a number of days in a week and the current date, return the days of the week on which the product should be used
+    private List<LocalDate> getWeeklyUsageDays(int numDays) {
+        List<LocalDate> usageDays = new ArrayList<>();
+        LocalDate today = LocalDate.now();
+        LocalDate startOfWeek = today.with(DayOfWeek.MONDAY);
+        for (int i = 0; i < 7; i++) {
+            if (i % (7 / numDays) == 0 && i < numDays * (7 / numDays)) {
+                usageDays.add(startOfWeek.plusDays(i));
+            }
+        }
+        return usageDays;
+    }
+
+
+    // Given a number of days in a month and the current date, return the days of the month on which the product should be used
+    private List<LocalDate> getMonthlyUsageDays(int numDays) {
+        List<LocalDate> usageDays = new ArrayList<LocalDate>();
+        LocalDate today = LocalDate.now();
+        LocalDate firstDayOfMonth = today.with(TemporalAdjusters.firstDayOfMonth());
+        int daysPerMonth = firstDayOfMonth.getMonth().maxLength();
+        int daysBetweenUsages = daysPerMonth / numDays;
+        int daysToAdd = 0;
+        for (int i = 0; i < numDays; i++) {
+            LocalDate usageDay = firstDayOfMonth.plusDays(daysToAdd);
+            usageDays.add(usageDay);
+            daysToAdd += daysBetweenUsages;
+        }
+        return usageDays;
+    }
+
+
+    public static List<Products> filterProducts(List<Products> productList) {
+        // Step 1: Create a Map to store the products based on their categories.
+        Map<String, List<Products>> categoryMap = new HashMap<>();
+        for (Products product : productList) {
+            List<Products> products = categoryMap.getOrDefault(product.getCategory(), new ArrayList<>());
+            products.add(product);
+            categoryMap.put(product.getCategory(), products);
+        }
+
+        // Step 2: Iterate through the categories and sort the products based on their usage type.
+        List<Products> filteredList = new ArrayList<>();
+        for (Map.Entry<String, List<Products>> entry : categoryMap.entrySet()) {
+            List<Products> products = entry.getValue();
+            if (products.size() == 1) {
+                filteredList.add(products.get(0));
+            } else {
+                products.sort(new UsageTypeComparator());
+                filteredList.add(products.get(0));
+            }
+        }
+        return filteredList;
+    }
+
+    private static class UsageTypeComparator implements Comparator<Products> {
+        @Override
+        public int compare(Products p1, Products p2) {
+            if (p1.getUsage().equals(p2.getUsage())) {
+                // If the usage type is same, select a random product.
+                return new Random().nextInt(2) == 0 ? -1 : 1;
+            } else if (p1.getUsage().equals("monthly")) {
+                return -1;
+            } else if (p2.getUsage().equals("monthly")) {
+                return 1;
+            } else if (p1.getUsage().equals("weekly")) {
+                return -1;
+            } else if (p2.getUsage().equals("weekly")) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+    }
+
+    public List<Products> sortProductsByModule(List<Products> products) {
+        Collections.sort(products, new Comparator<Products>() {
+            @Override
+            public int compare(Products p1, Products p2) {
+                if (p1.getModule().equals("skincare") && !p2.getModule().equals("skincare")) {
+                    return -1;  // p1 should come before p2
+                } else if (p2.getModule().equals("skincare") && !p1.getModule().equals("skincare")) {
+                    return 1;   // p2 should come before p1
+                } else if (p1.getModule().equals("makeup") && !p2.getModule().equals("makeup")) {
+                    return -1;  // p1 should come before p2
+                } else if (p2.getModule().equals("makeup") && !p1.getModule().equals("makeup")) {
+                    return 1;   // p2 should come before p1
+                } else {
+                    return 0;   // no change in order
+                }
+            }
+        });
+        return products;
+    }
+
+
+    public ResponseEntity<Object> getDailyRecommendation(String idToken)
+    {
+        try {
+            Optional<Userdetails> user = userService.getUser(idToken);
+            Userdetails actualUser = user.orElse(null);
+            if (actualUser != null) {
+                List<Products> products = productsRepository.findByUserAndHealthGreaterThan(actualUser, 10);
+                List<Products> result = getProductsToUseToday(products);
+                List<Products> finalresult = filterProducts(result);
+                List<Products> sortedresult = sortProductsByModule(finalresult);
+
+                return new ResponseEntity<>(sortedresult, HttpStatus.OK);
+            }
+            else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 

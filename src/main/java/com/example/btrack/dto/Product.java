@@ -18,6 +18,4 @@ public class Product {
     private String usage;
     private int days;
     private int health;
-
-
 }

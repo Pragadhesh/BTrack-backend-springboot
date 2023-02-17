@@ -111,5 +111,20 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/recommendation")
+    public ResponseEntity<Object> getRecommendation(@RequestHeader("Authorization") String authorization)
+    {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result)
+        {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        }
+        else
+        {
+            return productService.getDailyRecommendation(idToken);
+        }
+    }
+
 
 }

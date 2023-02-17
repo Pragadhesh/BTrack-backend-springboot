@@ -12,5 +12,7 @@ public interface ProductsRepository extends JpaRepository<Products, Long> {
     List<Products> findByUserAndModule(Userdetails actualUser, String module);
 
     List<Products> findByUserAndHealthLessThanOrderByHealthAsc(Userdetails user,int health);
+
+    List<Products> findByUserAndHealthGreaterThan(Userdetails user, int i);
 }
 
