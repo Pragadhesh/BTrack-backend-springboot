@@ -24,6 +24,8 @@ public class Assist {
     @JoinColumn(name = "assistant_id")
     private Userdetails assistant;
 
+    private String status;
+
     @PrePersist
     @PreUpdate
     public void validateAssist() throws Exception {
