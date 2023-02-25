@@ -22,6 +22,7 @@ public class Notes {
 
     private String title;
 
+    @Column(columnDefinition = "text")
     private String description;
 
     public Notes(String title, String description, Userdetails actualUser) {

@@ -19,7 +19,7 @@ public class AssistController {
     @Autowired
     Authenticator authService;
 
-    @GetMapping("/assistants")
+    @PostMapping("/assistants")
     public ResponseEntity<Object> getAssistants(@RequestHeader("Authorization") String authorization, @RequestBody Username name)
     {
         String idToken = authorization.replace("Bearer ", "");
@@ -145,5 +145,34 @@ public class AssistController {
         }
     }
 
+    @PostMapping("/assistants/delete")
+    public ResponseEntity<Object> deleteAssistant(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result)
+        {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        }
+        else
+        {
+            return assistService.deleteRequest(idToken,user);
+        }
+    }
+
+    @PostMapping("/assistants/getdetails")
+    public ResponseEntity<Object> getDetails(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    {
+        String idToken = authorization.replace("Bearer ", "");
+        Boolean result = authService.isTokenExpired(idToken);
+        if (result)
+        {
+            return new ResponseEntity<>("Your token is invalid or has expired", HttpStatus.UNAUTHORIZED);
+        }
+        else
+        {
+            return assistService.getDetails(idToken,user);
+        }
+    }
 
 }

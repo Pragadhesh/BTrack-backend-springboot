@@ -1,7 +1,9 @@
 package com.example.btrack;
 
+import com.example.btrack.models.Dailycron;
 import com.example.btrack.models.Products;
 import com.example.btrack.models.Userdetails;
+import com.example.btrack.repository.DailycronRepository;
 import com.example.btrack.repository.ProductsRepository;
 import com.example.btrack.repository.UserRepository;
 import com.example.btrack.service.AlertEmailService;
@@ -13,6 +15,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.LockModeType;
+import javax.persistence.NoResultException;
+import java.time.LocalDate;
 import java.util.List;
 
 @SpringBootApplication
@@ -26,6 +33,9 @@ public class BtrackApplication {
 	UserRepository userRepository;
 
 	@Autowired
+	DailycronRepository dailycronRepository;
+
+	@Autowired
 	ProductService productService;
 
 	@Autowired
@@ -37,15 +47,39 @@ public class BtrackApplication {
 
 	@Scheduled(cron = "0 0 0 * * *")
 	public void runDaily() {
-		List<Products> products = productsRepository.findAll();
-		String originalcron  = "0/40 * * * * *";
-		for (Products product : products) {
-			product.decreaseHealth();
-			productsRepository.save(product);
+		LocalDate now = LocalDate.now();
+		EntityManagerFactory entityManagerFactory = null;
+		EntityManager em = entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		try {
+			Dailycron dailyCron = em.createQuery("SELECT dc FROM Dailycron dc WHERE dc.lastExecutionDate = :now", Dailycron.class)
+					.setParameter("now", now)
+					.setLockMode(LockModeType.PESSIMISTIC_WRITE)
+					.getSingleResult();
+			if (!dailyCron.getIsExecutedToday()) {
+				List<Products> products = productsRepository.findAll();
+				String originalcron = "0/40 * * * * *";
+				for (Products product : products) {
+					product.decreaseHealth();
+					productsRepository.save(product);
+				}
+				sendAlertsDaily();
+				sendRoutineDaily();
+
+				dailyCron.setIsExecutedToday(true);
+				em.merge(dailyCron);
+			}
+		} catch (NoResultException e) {
+			Dailycron dailyCron = new Dailycron();
+			dailyCron.setLastExecutionDate(now);
+			dailyCron.setIsExecutedToday(false);
+			em.persist(dailyCron);
 		}
-		sendAlertsDaily();
-		sendRoutineDaily();
+		em.getTransaction().commit();
+		em.close();
 	}
+
+
 
 	public void sendAlertsDaily()
 	{
