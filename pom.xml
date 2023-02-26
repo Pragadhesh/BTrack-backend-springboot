@@ -72,21 +72,19 @@
 		</dependency>
 	</dependencies>
 
+	<!-- Spring boot maven plugin to create executable JAR -->
 	<build>
+		<finalName>btrack</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
+					<executable>true</executable>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
