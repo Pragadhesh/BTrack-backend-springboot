@@ -27,6 +27,7 @@ public class NotesService {
     NotesRepository notesRepository;
 
     public ResponseEntity<Object> addNotes(String idToken, Note note) {
+        System.out.println("Entered addNotes");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -50,6 +51,7 @@ public class NotesService {
     }
 
     public ResponseEntity<Object> getNotes(String idToken) {
+        System.out.println("Entered getNotes");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -67,6 +69,7 @@ public class NotesService {
     }
 
     public ResponseEntity<Object> deleteNote(String idToken, Note note) {
+        System.out.println("Entered deleteNote");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -92,6 +95,7 @@ public class NotesService {
     }
 
     public ResponseEntity<Object> updateNote(String idToken, Note note) {
+        System.out.println("Entered updateNote");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);

@@ -29,6 +29,7 @@ public class ProductService {
     ProductsRepository productsRepository;
 
     public ResponseEntity<Object> getProductsByCategory(String module, String category) {
+        System.out.println("Entered getProductsByCategory");
         try {
             ObjectMapper mapper = new ObjectMapper();
             InputStream stream = getClass().getResourceAsStream("/data/" + module + "/" + category + ".json");
@@ -38,12 +39,14 @@ public class ProductService {
             Object json = mapper.readValue(stream, Object.class);
             return ResponseEntity.ok(json);
         } catch (IOException e) {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     public ResponseEntity<Object> addProduct(String idToken,Product item)
     {
+        System.out.println("Entered addProduct");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -67,7 +70,7 @@ public class ProductService {
                 {
                     Products products = new Products(
                             actualUser,item.getName(),item.getDescription(),item.getImage_url(),
-                            item.getModule(),item.getCategory(),item.getHealth(),item.getDamage(),
+                            item.getModule(),item.getCategory(),item.getHealth(),matchingProducts.get(0).getDamage(),
                             item.getUsage(),item.getDays());
                     Products pd = productsRepository.save(products);
                     return new ResponseEntity<>(pd,HttpStatus.OK);
@@ -87,6 +90,7 @@ public class ProductService {
 
     public ResponseEntity<Object> updateProduct(String idToken,Product item)
     {
+        System.out.println("Entered updateProduct");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -121,6 +125,7 @@ public class ProductService {
 
     public ResponseEntity<Object> deleteProduct(String idToken,Product item)
     {
+        System.out.println("Entered deleteProduct");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -152,6 +157,7 @@ public class ProductService {
 
     public ResponseEntity<Object> getProduct(String idToken,String module)
     {
+        System.out.println("Entered getProduct");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -185,6 +191,7 @@ public class ProductService {
 
     public ResponseEntity<Object> getAlerts(String idToken)
     {
+        System.out.println("Entered getAlerts");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -207,6 +214,7 @@ public class ProductService {
 
     public List<Products> getAlertsforUser(Userdetails user)
     {
+        System.out.println("Entered getAlertsforUser");
         try {
                 List<Products> pr = productsRepository.findByUserAndHealthLessThanOrderByHealthAsc(user,21);
                 return pr;
@@ -219,6 +227,7 @@ public class ProductService {
     }
 
     public List<Products> getProductsToUseToday(List<Products> products) {
+        System.out.println("Entered getProductsToUseToday");
         // Find products that need to be used today
         List<Products> productsToUseToday = new ArrayList<Products>();
         for (int i = 0; i < products.size(); i++) {

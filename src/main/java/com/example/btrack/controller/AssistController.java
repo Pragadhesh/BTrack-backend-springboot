@@ -20,7 +20,7 @@ public class AssistController {
     Authenticator authService;
 
     @PostMapping("/assistants")
-    public ResponseEntity<Object> getAssistants(@RequestHeader("Authorization") String authorization, @RequestBody Username name)
+    public ResponseEntity<Object> getAssistants(@RequestHeader("authorization") String authorization, @RequestBody Username name)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -39,7 +39,7 @@ public class AssistController {
 
     // send request for adding assistant
     @PostMapping("/assistants/send")
-    public ResponseEntity<Object> addAssistant(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    public ResponseEntity<Object> addAssistant(@RequestHeader("authorization") String authorization, @RequestBody Userdetails user)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -54,7 +54,7 @@ public class AssistController {
     }
 
     @PostMapping("/assistants/cancel")
-    public ResponseEntity<Object> cancelAssistant(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    public ResponseEntity<Object> cancelAssistant(@RequestHeader("authorization") String authorization, @RequestBody Userdetails user)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -69,7 +69,7 @@ public class AssistController {
     }
 
     @PostMapping("/assistants/reject")
-    public ResponseEntity<Object> rejectUser(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    public ResponseEntity<Object> rejectUser(@RequestHeader("authorization") String authorization, @RequestBody Userdetails user)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -84,7 +84,7 @@ public class AssistController {
     }
 
     @PostMapping("/assistants/accept")
-    public ResponseEntity<Object> acceptUser(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    public ResponseEntity<Object> acceptUser(@RequestHeader("authorization") String authorization, @RequestBody Userdetails user)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -100,7 +100,7 @@ public class AssistController {
 
 
     @GetMapping("/assistants/requests")
-    public ResponseEntity<Object> getAssistrequests(@RequestHeader("Authorization") String authorization)
+    public ResponseEntity<Object> getAssistrequests(@RequestHeader("authorization") String authorization)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -116,7 +116,7 @@ public class AssistController {
 
     // Get my people
     @GetMapping("/assistants/people")
-    public ResponseEntity<Object> getPeople(@RequestHeader("Authorization") String authorization)
+    public ResponseEntity<Object> getPeople(@RequestHeader("authorization") String authorization)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -131,7 +131,7 @@ public class AssistController {
     }
 
     @GetMapping("/assistants/all")
-    public ResponseEntity<Object> getmyAssistants(@RequestHeader("Authorization") String authorization)
+    public ResponseEntity<Object> getmyAssistants(@RequestHeader("authorization") String authorization)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -146,7 +146,7 @@ public class AssistController {
     }
 
     @PostMapping("/assistants/delete")
-    public ResponseEntity<Object> deleteAssistant(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    public ResponseEntity<Object> deleteAssistant(@RequestHeader("authorization") String authorization, @RequestBody Userdetails user)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -161,7 +161,7 @@ public class AssistController {
     }
 
     @PostMapping("/assistants/getdetails")
-    public ResponseEntity<Object> getDetails(@RequestHeader("Authorization") String authorization, @RequestBody Userdetails user)
+    public ResponseEntity<Object> getDetails(@RequestHeader("authorization") String authorization, @RequestBody Userdetails user)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);

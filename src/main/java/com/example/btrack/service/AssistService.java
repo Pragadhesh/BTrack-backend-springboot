@@ -37,6 +37,7 @@ public class AssistService {
     ProductsRepository productsRepository;
 
     public ResponseEntity<Object> getAssistants(String idToken,String name) {
+        System.out.println("Entered get assistants");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -70,6 +71,7 @@ public class AssistService {
 
     // Send assist request
     public ResponseEntity<Object> sendRequest(String idToken,Userdetails user2) {
+        System.out.println("Entered send Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -103,6 +105,7 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -110,6 +113,7 @@ public class AssistService {
 
     // Accept assist request
     public ResponseEntity<Object> acceptRequest(String idToken,Userdetails user2) {
+        System.out.println("Entered accept Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -134,12 +138,14 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     // Cancel assist request
     public ResponseEntity<Object> cancelRequest(String idToken,Userdetails user2) {
+        System.out.println("Entered cancel Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -165,12 +171,14 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     // Reject assist request
     public ResponseEntity<Object> rejectRequest(String idToken,Userdetails user2) {
+        System.out.println("Entered reject Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -195,6 +203,7 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -202,6 +211,7 @@ public class AssistService {
 
     // Get all my assist requests
     public ResponseEntity<Object> getMyAssistRequests(String idToken) {
+        System.out.println("Entered get my assist Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -217,6 +227,7 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -224,6 +235,7 @@ public class AssistService {
 
     // Get all people
     public ResponseEntity<Object> getMyPeople(String idToken) {
+        System.out.println("Entered my people Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -239,6 +251,7 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -246,6 +259,7 @@ public class AssistService {
 
     // Get my assistants
     public ResponseEntity<Object> getMyAssistants(String idToken) {
+        System.out.println("Entered get my assistants Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -261,12 +275,14 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     // Delete assistant
     public ResponseEntity<Object> deleteRequest(String idToken,Userdetails user2) {
+        System.out.println("Entered delete Requests");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -292,12 +308,14 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     public ResponseEntity<Object> getDetails(String idToken,Userdetails user2)
     {
+        System.out.println("Entered get Details");
         try {
             Optional<Userdetails> user = userService.getUser(idToken);
             Userdetails actualUser = user.orElse(null);
@@ -322,6 +340,7 @@ public class AssistService {
         }
         catch (Exception e)
         {
+            System.out.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 

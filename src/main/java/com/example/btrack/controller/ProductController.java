@@ -19,7 +19,7 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/addproduct/{module}/{category}")
-    public ResponseEntity<Object> addProducts(@RequestHeader("Authorization") String authorization, @PathVariable String category,@PathVariable String module)
+    public ResponseEntity<Object> addProducts(@RequestHeader("authorization") String authorization, @PathVariable String category,@PathVariable String module)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -34,7 +34,7 @@ public class ProductController {
     }
 
     @PostMapping("/product")
-    public ResponseEntity<Object> addProduct(@RequestHeader("Authorization") String authorization,
+    public ResponseEntity<Object> addProduct(@RequestHeader("authorization") String authorization,
                                              @RequestBody Product product)
     {
         String idToken = authorization.replace("Bearer ", "");
@@ -52,7 +52,7 @@ public class ProductController {
 
 
     @PutMapping("/product")
-    public ResponseEntity<Object> updateProduct(@RequestHeader("Authorization") String authorization,
+    public ResponseEntity<Object> updateProduct(@RequestHeader("authorization") String authorization,
                                              @RequestBody Product product)
     {
         String idToken = authorization.replace("Bearer ", "");
@@ -70,7 +70,7 @@ public class ProductController {
 
 
     @DeleteMapping("/product")
-    public ResponseEntity<Object> deleteProduct(@RequestHeader("Authorization") String authorization,
+    public ResponseEntity<Object> deleteProduct(@RequestHeader("authorization") String authorization,
                                                 @RequestBody Product product) {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -82,7 +82,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/{module}")
-    public ResponseEntity<Object> getProducts(@RequestHeader("Authorization") String authorization,@PathVariable String module)
+    public ResponseEntity<Object> getProducts(@RequestHeader("authorization") String authorization,@PathVariable String module)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -97,7 +97,7 @@ public class ProductController {
     }
 
     @GetMapping("/alerts")
-    public ResponseEntity<Object> getAlerts(@RequestHeader("Authorization") String authorization)
+    public ResponseEntity<Object> getAlerts(@RequestHeader("authorization") String authorization)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);
@@ -112,7 +112,7 @@ public class ProductController {
     }
 
     @GetMapping("/recommendation")
-    public ResponseEntity<Object> getRecommendation(@RequestHeader("Authorization") String authorization)
+    public ResponseEntity<Object> getRecommendation(@RequestHeader("authorization") String authorization)
     {
         String idToken = authorization.replace("Bearer ", "");
         Boolean result = authService.isTokenExpired(idToken);

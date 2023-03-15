@@ -29,6 +29,7 @@ public class Authenticator {
     }
 
     public boolean isUserAuthenticated(String token) {
+        System.out.println("Entered isUserAuthenticated");
         AuthFlowType authFlowType;
         authFlowType = AuthFlowType.REFRESH_TOKEN_AUTH;
         InitiateAuthRequest authRequest = new InitiateAuthRequest()

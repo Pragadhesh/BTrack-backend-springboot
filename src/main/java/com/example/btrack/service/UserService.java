@@ -21,6 +21,7 @@ public class UserService {
     }
 
     public ResponseEntity<Object> addUser(String idToken) {
+        System.out.println("Entered addUser");
         try {
             // Parse the JWT token to get the username and email
             JWT jwt = new JWT();
